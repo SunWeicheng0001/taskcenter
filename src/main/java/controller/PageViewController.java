@@ -34,4 +34,9 @@ public class PageViewController {
     	ControlLog("logout");
     	return "logout";
     }
+    @RequestMapping(value = "/404.htm", method=RequestMethod.GET)
+    public String get404Page(){
+    	ControlLog("404");
+    	return "404";
+    }
 }

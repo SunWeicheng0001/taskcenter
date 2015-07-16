@@ -26,11 +26,11 @@
 </head>
 
 <body>
-<%-- 	<security:authorize access="hasRole('ROLE_USER')"> --%>
-<!-- 		<script> -->
-<%-- 		window.location.href = '<%=request.getContextPath()%>/task/taskcenter.htm'; --%>
-<!-- 		</script> -->
-<%-- 	</security:authorize> --%>
+	<security:authorize access="hasRole('ROLE_USER')">
+		<script>
+		window.location.href = '<%=request.getContextPath()%>taskcenter.htm';
+ 		</script>
+	</security:authorize>
 <div class="container">
 
   <form class="form-signin"

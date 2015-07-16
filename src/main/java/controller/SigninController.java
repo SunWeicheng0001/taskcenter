@@ -14,9 +14,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 public class SigninController extends BaseController {
-	//@Resource(name = "userMapper")
 	@Autowired
-	//@Resource(name="userImpl")
     private MyUserDetailsService userMapper;
     @RequestMapping(value = "/signin.ajax", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody Map signin(@RequestBody Map param){
