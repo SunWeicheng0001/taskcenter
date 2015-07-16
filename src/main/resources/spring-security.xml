@@ -14,7 +14,7 @@
 		<access-denied-handler ref="accessDeniedHandler" />
 		
 		<form-login
-				login-page="/index.html" 
+				login-page="/index.htm" 
 				authentication-failure-url="/loginfailed.htm" 
 				default-target-url="/taskcenter.htm"/>
 			

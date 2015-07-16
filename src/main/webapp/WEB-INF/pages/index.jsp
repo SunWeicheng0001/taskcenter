@@ -28,7 +28,7 @@
 <body>
 	<security:authorize access="hasRole('ROLE_USER')">
 		<script>
-		window.location.href = '<%=request.getContextPath()%>taskcenter.htm';
+		window.location.href = '<%=request.getContextPath()%>/taskcenter.htm';
  		</script>
 	</security:authorize>
 <div class="container">
