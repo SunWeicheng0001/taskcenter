@@ -19,19 +19,19 @@ public class PageViewController {
     	ControlLog("index");
         return "index";
     }
-    @RequestMapping(value = "/common.htm", method=RequestMethod.GET)
-    public String getCommonPage(){
-    	ControlLog("common");
-    	return "common";
-    }
-    @RequestMapping(value = "/admin.htm", method=RequestMethod.GET)
-    public String getAdminPage(){
-    	ControlLog("admin");
-    	return "admin";
-    }
     @RequestMapping(value = "/taskcenter.htm", method=RequestMethod.GET)
-    public String getTaskcenterPage(){
+    public String getCommonPage(){
     	ControlLog("taskcenter");
     	return "taskcenter";
+    }
+    @RequestMapping(value = "/loginfailed.htm", method=RequestMethod.GET)
+    public String getAdminPage(){
+    	ControlLog("loginfailed");
+    	return "loginfailed";
+    }
+    @RequestMapping(value = "/logout.htm", method=RequestMethod.GET)
+    public String getTaskcenterPage(){
+    	ControlLog("logout");
+    	return "logout";
     }
 }
