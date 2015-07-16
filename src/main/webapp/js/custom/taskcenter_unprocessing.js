@@ -44,7 +44,7 @@ function createUnprocessingTaskTable(data) {
 					$('#task_updatetime').text(row.updatetime_format);
 					$('#task_name').text(row.task_name);
 					$('#task_status').text(row.task_status);
-					$('#task_publisher').text(row.user_name);
+					$('#task_publisher').text(row.username +" "+ row.usernickname);
 					$('#task_detail').html(row.task_detail);
 
 					$('#durationSelect').val(-1);

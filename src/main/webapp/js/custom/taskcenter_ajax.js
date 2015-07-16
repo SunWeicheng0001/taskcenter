@@ -58,7 +58,7 @@ function getMyUser() {
 				console.log(globalUser);
 				$('#userSelectPublishTask').text(globalUser.username+" "+globalUser.usernickname);
 				$('#editUserSelectPublishTask').text(globalUser.username+" "+globalUser.usernickname);
-				//$('#userSelect').text(globalUser.username);
+				$('#userSelect').text(globalUser.username+" "+globalUser.usernickname);
 				//$('#userSelect_finish').text(globalUser.user_name);
 			} else if (res) {
 				alert(res.message);

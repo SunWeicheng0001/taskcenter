@@ -7,8 +7,8 @@ $(window).load(function() {
 
 	getMyUser();
 
-//	$('#unprocessingTasks').on('show.bs.tab', showUnprocessingTasks);
-//	$('#processingTasks').on('show.bs.tab', showProcessingTasks);
+	$('#unprocessingTasks').on('show.bs.tab', showUnprocessingTasks);
+	$('#processingTasks').on('show.bs.tab', showProcessingTasks);
 //	$('#processedTasks').on('show.bs.tab', showProcessedTasks);
 //
 //	$('#pickTaskButton').off('click').on('click', pickTask);
@@ -39,4 +39,8 @@ function refreshTab(){
 		showProcessedTasks();
 		break;
 	}
+}
+
+function tableClasses(){
+	return 'table table-striped';
 }

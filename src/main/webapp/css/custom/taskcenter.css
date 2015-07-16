@@ -1,0 +1,18 @@
+#task_detail{
+	border:1px solid #444444;
+	border-radius: 15px;
+	padding£º10px;
+}
+
+td p {
+	text-indent: 2em;
+	padding: 0px;
+	margin: 0px;
+	overflow:hidden;
+	max-width:600px;
+	max-height:400px;
+}
+td {
+	overflow:hidden;
+	max-width:140px;
+}
