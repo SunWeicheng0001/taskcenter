@@ -7,6 +7,12 @@
 		<if test="task_status==null">order by task.task_id desc</if>
 	</select>
 	
+	<select id="getProcessInfo" resultType="map">
+		select process.*,usernickname as executor
+		from  process, user, task 
+		where process.task_id=#{task_id} and task.task_id=#{task_id} and user.userid=process.user_id
+	</select>
+	
 	<insert id="insertTask" useGeneratedKeys="true" keyProperty="task_id">
 		insert into task(task_name, task_detail, task_publisher)
 		values(#{task_name}, #{task_detail}, #{userid})
@@ -31,21 +37,8 @@
 		select * from task where task_id=#{task_id}
 	</select>
 	
-	<select id="getPublisherByTaskId" resultType="map">
-		Select user.* from user, task where task.task_id=#{task_id} and user.userid=task.task_publisher
-		limit 1
-	</select>
-	
-	<select id="getExecutorByTaskId" resultType="map">
-		Select user.* from user, process where process.task_id=#{task_id} and user.userid=process.user_id
-		limit 1
-	</select>
-	
 	<update id="updateProcessStatus">
 		update process set status=#{process_status} where process_id=#{process_id}
 	</update>
 	
-	<select id="getProcessById">
-		select * from process where process_id=#{process_id}
-	</select>
 </mapper>

@@ -81,21 +81,19 @@ function processingFormat(rows) {
 	for (var i = 0; i < rows.length; i++) {
 		rows[i].addtime_format = new Date(rows[i].addtime).pattern("MM-dd hh:mm:ss");
 		rows[i].updatetime_format = new Date(rows[i].updatetime).pattern("MM-dd hh:mm:ss");
-		if (rows[i].executor) {
-			rows[i].starttime_format = new Date(rows[i].executor.addtime).pattern("MM-dd hh:mm:ss");
-			rows[i].executor_name = rows[i].executor.usernickname;//显示昵称
-			var endTime = new Date(rows[i].executor.addtime);
-			endTime.setDate(endTime.getDate()+ rows[i].executor.process_duration);
+		if (rows[i].processInfo) {
+			rows[i].starttime_format = new Date(rows[i].processInfo.addtime).pattern("MM-dd hh:mm:ss");
+			rows[i].executor_name = rows[i].processInfo.executor;//显示昵称
+			var endTime = new Date(rows[i].processInfo.addtime);
+			endTime.setDate(endTime.getDate()+ rows[i].processInfo.process_duration);
 			rows[i].endtime_format = endTime.pattern("MM-dd hh:mm:ss");
 		}
-		if(rows[i].publisher){
-			rows[i].publisher_name=rows[i].publisher.usernickname;//显示昵称
-		}
+			rows[i].publisher_name=rows[i].usernickname;//显示昵称
 	}
 }
 
 function finishTheTaskIcon(value, row) {
-	if (row.executor.userid == globalUser.userid) {
+	if (row.processInfo.user_id == globalUser.userid) {
 		return "<a class='finish' href='javascript:void(0)'style=''>完成任务</a><br>"
 			+ "<a class='edit pull-right' href='javascript:void(0)'style='font-size:9px; color:#999;margin-top:10px'>编辑</a>";
 	} else {

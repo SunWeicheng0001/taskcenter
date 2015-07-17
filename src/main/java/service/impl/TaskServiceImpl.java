@@ -50,10 +50,8 @@ public class TaskServiceImpl implements TaskService{
 		//System.out.println(taskList);
 		if(taskList!=null && "正在进行中".equals(param.get("task_status"))){
 			for(Map item: taskList){
-				Map publisher = taskMapper.getPublisherByTaskId(item);
-				item.put("publisher", publisher);
-				Map executor = taskMapper.getExecutorByTaskId(item);
-				item.put("executor",executor);
+				Map processInfo = taskMapper.getProcessInfo(item);
+				item.put("processInfo", processInfo);
 			}
 		}
 //		splitTaskDetail(taskList, "task_detail", "task_detail_list");
@@ -164,7 +162,7 @@ public class TaskServiceImpl implements TaskService{
 		if(userid!=(Integer)param.get("userid")){
 			throw new Exception("您不是正在登录的用户！");
 		}
-		Map process = taskMapper.getProcessById(param);
+		//Map process = taskMapper.getProcessById(param);
 		return null;
 	}
 

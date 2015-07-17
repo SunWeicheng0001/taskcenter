@@ -11,8 +11,6 @@ public interface TaskMapper {
 	public Integer updateTaskStatus(Map param);
 	public Integer insertProcess(Map param);
 	public Map getTaskById(Map param); 
-	public Map getPublisherByTaskId(Map param);
-	public Map getExecutorByTaskId(Map param);
+	public Map getProcessInfo(Map param);
 	public Integer updateProcessStatus(Map param);
-	public Map getProcessById(Map param);
 }
