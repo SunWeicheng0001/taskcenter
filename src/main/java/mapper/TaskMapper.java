@@ -8,4 +8,11 @@ public interface TaskMapper {
 	public Integer insertTask(Map param);
 	public void deleteTask(Map param);
 	public Integer updateTask(Map param);
+	public Integer updateTaskStatus(Map param);
+	public Integer insertProcess(Map param);
+	public Map getTaskById(Map param); 
+	public Map getPublisherByTaskId(Map param);
+	public Map getExecutorByTaskId(Map param);
+	public Integer updateProcessStatus(Map param);
+	public Map getProcessById(Map param);
 }

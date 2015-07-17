@@ -59,7 +59,7 @@ function getMyUser() {
 				$('#userSelectPublishTask').text(globalUser.username+" "+globalUser.usernickname);
 				$('#editUserSelectPublishTask').text(globalUser.username+" "+globalUser.usernickname);
 				$('#userSelect').text(globalUser.username+" "+globalUser.usernickname);
-				//$('#userSelect_finish').text(globalUser.user_name);
+				$('#userSelect_finish').text(globalUser.username+" "+globalUser.usernickname);
 			} else if (res) {
 				alert(res.message);
 			} else {
@@ -117,6 +117,7 @@ function publishTask() {
 function deleteTask(){
 	var taskname = globalRow.task_name;
 	var taskid = globalRow.task_id;
+	var userid = globalUser.userid;
 	$.ajax({
 		url : ContextPath + '/task/deleteTask.ajax',
 		type : 'post',
@@ -124,7 +125,8 @@ function deleteTask(){
 		contentType : 'application/json',
 		data : JSON.stringify({
 			task_name : taskname,
-			task_id :taskid
+			task_id :taskid,
+			userid : userid
 		}),
 		success : function(res) {
 			if (res && res.success) {
@@ -182,5 +184,83 @@ function editTask(){
 		error : function(err) {
 			alert('未知错误');
 		}
+	});
+}
+function pickTask(){
+	var userid = globalUser.userid;
+	var task_id = globalRow.task_id;
+	var selectTime = $("#durationSelect").val();
+	$.ajax({
+		url : ContextPath + '/task/pickTask.ajax',
+		type : 'post',
+		dataType : 'json',
+		contentType : 'application/json',
+		data : JSON.stringify({
+			task_id : task_id,
+			userid :userid,
+			duration : selectTime
+		}),
+		success : function(res) {
+			if (res && res.success) {
+				alert('领取成功！');
+				$('#processTheTaskModal').modal('hide');
+				refreshTab();
+			} else if (res) {
+				alert(res.message);
+			} else {
+				alert('服务器异常！');
+			}
+		},
+		error : function(err) {
+			alert('未知错误');
+		}
+	});
+}
+
+function finishTask(){
+	var finishTypeVal = $('#finishStatusSelect').val();
+	if(finishTypeVal == -1){
+		alert("请选择完成类型");
+		return;
+	}
+	if(finishTypeVal == 1){//完成任务
+		
+	}
+	else if(finishTypeVal == 2){//申请延期
+		
+	}
+	else if(finishTypeVal == 3){//放弃任务
+		
+	}
+}
+
+function toFinishTask(){
+	var userid = globalUser.userid;
+	var task_id = globalRow.task_id;
+	$.ajax({
+		url : ContextPath + "/finishTask.ajax",
+		type : "post",
+		dataType : "json",
+		contentType: "application/json",
+		data : JSON.stringify({
+			userid: userid,
+			task_id: task_id,
+			
+		}),
+		success : function(res){
+			if(res && res.success){
+				alert("任务完成");
+				$('#finishTheTaskModal').modal('hide');
+				refreshTab();
+			}else if (res) {
+				alert(res.message);
+			} else {
+				alert('服务器异常！');
+			}
+		},
+		error: function(res){
+			alert('未知错误');
+		}
+		
 	});
 }

@@ -20,4 +20,32 @@
 		update task set task_name = #{task_name}, task_detail = #{task_detail}, updatetime = now()
 		where task_id=#{task_id}
 	</update>
+	
+	<update id="updateTaskStatus">
+		update task set task_status = #{task_status_new} where task_id = #{task_id}
+	</update>
+	<insert id="insertProcess" useGeneratedKeys="true" keyProperty="process_id">
+		insert into process(user_id, task_id,process_duration) values(#{userid},#{task_id},#{process_duration})
+	</insert>
+	<select id="getTaskById" resultType="map">
+		select * from task where task_id=#{task_id}
+	</select>
+	
+	<select id="getPublisherByTaskId" resultType="map">
+		Select user.* from user, task where task.task_id=#{task_id} and user.userid=task.task_publisher
+		limit 1
+	</select>
+	
+	<select id="getExecutorByTaskId" resultType="map">
+		Select user.* from user, process where process.task_id=#{task_id} and user.userid=process.user_id
+		limit 1
+	</select>
+	
+	<update id="updateProcessStatus">
+		update process set status=#{process_status} where process_id=#{process_id}
+	</update>
+	
+	<select id="getProcessById">
+		select * from process where process_id=#{process_id}
+	</select>
 </mapper>

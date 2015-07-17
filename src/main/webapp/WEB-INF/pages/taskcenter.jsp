@@ -17,6 +17,7 @@
 	<script src="js/custom/taskcenter.js"></script>
 	<script src="js/custom/taskcenter_ajax.js"></script>
 	<script src="js/custom/taskcenter_unprocessing.js"></script>
+	<script src="js/custom/taskcenter_processing.js"></script>
 	<script src="js/custom/taskcenter_publish_task.js"></script>
 	<script src="js/custom/taskcenter_edit_task.js"></script>
 	<script src="js/custom/util.js"></script>
@@ -142,13 +143,13 @@
 					<div class="modal-body">
 						<div class="fontsize_11 fontcolor_6">
 							<div class="row margin_5">
-								<div class="col-md-2">
+								<div class="col-md-4">
 									任务ID：<span id="task_id"></span>
 								</div>
-								<div class="col-md-5">
+								<div class="col-md-4">
 									发布时间：<span id="task_addtime"></span>
 								</div>
-								<div class="col-md-5">
+								<div class="col-md-4">
 									修改时间：<span id="task_updatetime"></span>
 								</div>
 							</div>
@@ -180,9 +181,9 @@
 							</div>
 							<div class="row margin_5">
 								<div class="col-md-7">
-									请选择你的预计完成该任务的天数：<select id="durationSelect">
-										<option value="-1">请选择</option>
-										<option value="1">1</option>
+									请选择你的预计完成该任务的天数：
+									<select id="durationSelect">
+										<option value="1" selected="true">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 										<option value="4">4</option>
@@ -209,35 +210,85 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="finishTheTaskModal">
+	</div>
+	<div class="modal fade" id="finishTheTaskModal">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title">领悟任务</h4>
+						<h4 class="modal-title">完成任务</h4>
 					</div>
 					<div class="modal-body">
 						<div class="fontsize_11 fontcolor_6">
-							<div class="row magin_5">
-								<div class="col-md-2">
-									编码：<span id="task_id_finish"></span>
+							<div class="row margin_5">
+								<div class="col-md-4">
+									任务ID：<span id="task_id_finish"></span>
 								</div>
-								<div class="col-md-5">
+								<div class="col-md-4">
 									发布时间：<span id="task_addtime_finish"></span>
 								</div>
-								<div class="col-md-5">
+								<div class="col-md-4">
 									修改时间：<span id="task_updatetime_finish"></span>
+								</div>
+							</div>
+							<div class="row margin_5">
+								<div class="col-md-4">
+									发布者：<span id="task_publisher_finish"></span>
+								</div>
+								<div class="col-md-4">
+									领取时间：<span id="task_startime_finish"></span>
+								</div>
+								<div class="col-md-4">
+									预计完成时间：<span id="task_endtime_finish"></span>
+								</div>
+							</div>
+							<div class="row margin_5">
+								<div class="col-md-4">
+									任务名称：<span id="task_name_finish"></span>
+								</div>
+								<div class="col-md-4">
+									任务状态：<span id="task_status_finish"></span>
+								</div>
+							</div>
+						</div>
+						<div class="fontsize_13 fontcolor_5">
+							<div class="row margin_5 border_top">
+								<div class="col-md-12">任务详情：</div>
+							</div>
+							<div class="row margin_5 border_bottom" style="margin:0px 0px">
+								<div class="col-md-12 margin_left_10 margin_right_10" style="padding:10px"
+									id="task_detail_finish"></div>
+							</div>
+						</div>
+						<div class="fontsize_13 fontcolor_5">
+							<div class="row margin_5">
+								<div class="col-md-5">
+									你的角色：<span id="userSelect_finish" disabled> </span>
+								</div>
+							</div>
+							<div class="row margin_5">
+								<div class="col-md-7">
+									结束状态：<select id="finishStatusSelect">
+										<option value="-1">请选择</option>
+										<option value="1">完成任务</option>
+										<option value="2">申请延期</option>
+										<option value="3">放弃任务</option>
+									</select> <span id="finishStatusDurationSpan" style="display: none">输入延期天数：<input
+										id="finishStatusDurationInput" type="text"></span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary"
+							id="finishTaskButton">结束任务</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

@@ -1,6 +1,6 @@
-#task_detail{
+#task_detail,#task_detail_finish{
 	border:1px solid #444444;
-	border-radius: 15px;
+	border-radius: 8px;
 	padding£º10px;
 }
 

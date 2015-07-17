@@ -74,4 +74,26 @@ public class TaskController extends BaseController{
 			return initResult(false, e.getMessage(),"");
 		}
 	}
+	
+	@RequestMapping(value="/pickTask.ajax", method = RequestMethod.POST, consumes="application/json")
+	public @ResponseBody Map pickTask(@RequestBody Map param){
+		System.out.println("pickTask.ajax");
+		try{
+			return initResult(true, taskService.pickTask(param));
+		}catch(Exception e){
+			e.printStackTrace();
+			return initResult(false, e.getMessage(),"");
+		}
+	}
+	
+	@RequestMapping(value="/finishTask.ajax", method = RequestMethod.POST, consumes="application/json")
+	public @ResponseBody Map finsihTask(@RequestBody Map param){
+		System.out.println("finishTask.ajax");
+		try{
+			return initResult(true, taskService.endTask(param));
+		}catch(Exception e){
+			e.printStackTrace();
+			return initResult(false, e.getMessage(),"");
+		}
+	}
 }
