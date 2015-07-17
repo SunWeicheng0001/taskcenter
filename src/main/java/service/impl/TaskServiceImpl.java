@@ -162,8 +162,29 @@ public class TaskServiceImpl implements TaskService{
 		if(userid!=(Integer)param.get("userid")){
 			throw new Exception("您不是正在登录的用户！");
 		}
-		//Map process = taskMapper.getProcessById(param);
-		return null;
+		Map process = taskMapper.getProcessById(param);
+		if(process==null){
+			throw new Exception("任务不存在");
+		}
+		if(!"processing".equals(process.get("status"))){
+			throw new Exception("任务状态不是正在进行中");
+		}
+		Map task = taskMapper.getTaskById(param);
+		if(task==null){
+			throw new Exception("任务不存在");
+		}
+		if(!"正在进行中".equals(task.get("task_status"))){
+			throw new Exception("任务状态不是正在进行中");
+		}
+		param.put("task_status_new", "已完成");
+		if(1!= taskMapper.updateTaskStatus(param)){
+			throw new Exception("完成任务失败");
+		}
+		param.put("process_status_new", "finished");
+		if(1!=taskMapper.updateProcessStatus(param)){
+			throw new Exception("完成任务失败");
+		}
+		return true;
 	}
 
 	@Override

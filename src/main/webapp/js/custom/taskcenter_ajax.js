@@ -217,28 +217,11 @@ function pickTask(){
 	});
 }
 
-function finishTask(){
-	var finishTypeVal = $('#finishStatusSelect').val();
-	if(finishTypeVal == -1){
-		alert("请选择完成类型");
-		return;
-	}
-	if(finishTypeVal == 1){//完成任务
-		
-	}
-	else if(finishTypeVal == 2){//申请延期
-		
-	}
-	else if(finishTypeVal == 3){//放弃任务
-		
-	}
-}
-
-function toFinishTask(){
+function endTask(){
 	var userid = globalUser.userid;
 	var task_id = globalRow.task_id;
 	$.ajax({
-		url : ContextPath + "/finishTask.ajax",
+		url : ContextPath + "/task/finishTask.ajax",
 		type : "post",
 		dataType : "json",
 		contentType: "application/json",

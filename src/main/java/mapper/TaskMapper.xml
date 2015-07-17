@@ -30,6 +30,9 @@
 	<update id="updateTaskStatus">
 		update task set task_status = #{task_status_new} where task_id = #{task_id}
 	</update>
+	<update id="updateProcessStatus">
+		update process set status = #{process_status_new} where task_id = #{task_id}
+	</update>
 	<insert id="insertProcess" useGeneratedKeys="true" keyProperty="process_id">
 		insert into process(user_id, task_id,process_duration) values(#{userid},#{task_id},#{process_duration})
 	</insert>
@@ -37,8 +40,7 @@
 		select * from task where task_id=#{task_id}
 	</select>
 	
-	<update id="updateProcessStatus">
-		update process set status=#{process_status} where process_id=#{process_id}
-	</update>
-	
+	<select id="getProcessById" resultType="map">
+		select * from process where task_id=#{task_id}
+	</select>
 </mapper>
