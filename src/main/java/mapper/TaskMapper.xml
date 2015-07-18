@@ -27,6 +27,11 @@
 		where task_id=#{task_id}
 	</update>
 	
+	<update id="updateProcess">
+		update process set process_duration=#{process_duration},updatetime = now(),statuds=#{status}
+		where task_id=#{task_id}
+	</update>
+	
 	<update id="updateTaskStatus">
 		update task set task_status = #{task_status_new} where task_id = #{task_id}
 	</update>
